@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    {% if error %}
+        <p style="color: red;">Please submit a search term... Idiot!</p>
+    {% endif %}
+    {# <form action="/search/" method="get"> #}
+    <form action="" method="get">  {# action="" means submit form to the same URL #}
+        <input type="text" name="q">
+        {% comment %}
+        <p></p>
+        <input type="color" name="color_pick">
+        {% endcomment %}
+        <p></p>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

@@ -5,7 +5,10 @@ from django.http import Http404, HttpResponse
 import datetime
 
 def hello(request):
-    return HttpResponse("<strong>Hello World</strong>")
+    html = "<strong>Hello World</strong>"
+    html += display_meta(request=request)
+    return HttpResponse(html)
+    # return HttpResponse("<strong>Hello World</strong>")
 
 
 def current_datetime(request):
@@ -33,3 +36,13 @@ def hours_ahead(request, offset):
     # html = "<html><body>The UTC time is currently:%s</body></html>" %(now)
     # html += "<p><body>In %s hour(s) the UTC time will be: %s</body></p>" %(offset, dt)
     # return HttpResponse(html)
+
+def display_meta(request):
+    keys = list(request.META.keys())
+    values = request.META
+    # values = dict(request.META.items())
+    keys.sort()
+    html = []
+    for this_key in keys:
+        html.append('<tr><td>%s</td><td>%s</td></tr>' % (this_key, values[this_key]))
+    return '<table>%s</table>' % '\n' .join(html)
