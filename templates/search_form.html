@@ -5,8 +5,14 @@
     <title>Search</title>
 </head>
 <body>
-    {% if error %}
-        <p style="color: red;">Please submit a search term... Idiot!</p>
+    {# {% if error %} #}
+    {% if errors %}
+        {# <p style="color: red;">Please submit a search term 20 characters or shorter... Idiot!</p> #}
+        <ul>
+            {% for error in errors %}
+            <li style="color: red">{{ error }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
     {# <form action="/search/" method="get"> #}
     <form action="" method="get">  {# action="" means submit form to the same URL #}
